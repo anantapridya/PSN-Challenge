@@ -43,99 +43,101 @@ export default function CreatePost() {
   };
   // const notify = () => toast("This is a toast notification !");
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-10">
+    <>
       <Navbar />
-      <div className="md:grid grid-cols-2 gap-x-5 flex flex-col gap-y-3 mt-20">
-        <div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text" id="inputGroupFileAddon01">
-                Name
-              </span>
+      <form onSubmit={handleSubmit(onSubmit)} className="p-10">
+        <div className="md:grid grid-cols-2 gap-x-5 flex flex-col gap-y-3 mt-20">
+          <div>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroupFileAddon01">
+                  Name
+                </span>
+              </div>
+              <div className="custom-file">
+                <Controller
+                  control={control}
+                  name="name"
+                  render={({ field: { ref, ...rest }, fieldState }) => (
+                    <>
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Name"
+                        aria-label="Username"
+                        aria-describedby="addon-wrapping"
+                        {...rest}
+                      />
+                    </>
+                  )}
+                />
+              </div>
             </div>
-            <div className="custom-file">
-              <Controller
-                control={control}
-                name="name"
-                render={({ field: { ref, ...rest }, fieldState }) => (
-                  <>
+            {formState.errors.name && (
+              <small id="emailHelp" className="form-text text-red-700 block">
+                {formState.errors.name.message}
+              </small>
+            )}
+          </div>
+          <div>
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <span className="input-group-text" id="inputGroupFileAddon01">
+                  Email
+                </span>
+              </div>
+              <div className="custom-file">
+                <Controller
+                  control={control}
+                  name="email"
+                  render={({ field: { ref, ...rest }, fieldState }) => (
                     <input
-                      type="text"
+                      type="email"
                       className="form-control"
-                      placeholder="Name"
-                      aria-label="Username"
+                      placeholder="Email"
+                      aria-label="Email"
                       aria-describedby="addon-wrapping"
                       {...rest}
                     />
-                  </>
-                )}
-              />
+                  )}
+                />
+              </div>
             </div>
-          </div>
-          {formState.errors.name && (
-            <small id="emailHelp" className="form-text text-red-700 block">
-              {formState.errors.name.message}
-            </small>
-          )}
-        </div>
-        <div>
-          <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text" id="inputGroupFileAddon01">
-                Email
-              </span>
-            </div>
-            <div className="custom-file">
-              <Controller
-                control={control}
-                name="email"
-                render={({ field: { ref, ...rest }, fieldState }) => (
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    aria-label="Email"
-                    aria-describedby="addon-wrapping"
-                    {...rest}
-                  />
-                )}
-              />
-            </div>
-          </div>
-          {formState.errors.email && (
-            <small id="emailHelp" className="form-text text-red-700 block">
-              {formState.errors.email.message}
-            </small>
-          )}
-        </div>
-      </div>
-      <div className="mt-3 md:mt-0">
-        <div className="custom-file ">
-          <Controller
-            control={control}
-            name="body"
-            render={({ field: { ref, ...rest }, fieldState }) => (
-              <textarea
-                className="form-control"
-                placeholder="Comment"
-                aria-label="Comment"
-                aria-describedby="addon-wrapping"
-                {...rest}
-              />
+            {formState.errors.email && (
+              <small id="emailHelp" className="form-text text-red-700 block">
+                {formState.errors.email.message}
+              </small>
             )}
-          />
-          {formState.errors.body && (
-            <small id="emailHelp" className="form-text text-red-700 block">
-              {formState.errors.body.message}
-            </small>
-          )}
+          </div>
         </div>
-      </div>
-      <button type="submit" className="btn btn-primary mt-3">
-        Submit
-      </button>
-      <ToastContainer />
-    </form>
+        <div className="mt-3 md:mt-0">
+          <div className="custom-file ">
+            <Controller
+              control={control}
+              name="body"
+              render={({ field: { ref, ...rest }, fieldState }) => (
+                <textarea
+                  className="form-control"
+                  placeholder="Comment"
+                  aria-label="Comment"
+                  aria-describedby="addon-wrapping"
+                  {...rest}
+                />
+              )}
+            />
+            {formState.errors.body && (
+              <small id="emailHelp" className="form-text text-red-700 block">
+                {formState.errors.body.message}
+              </small>
+            )}
+          </div>
+        </div>
+        <button type="submit" className="btn btn-primary mt-3">
+          Submit
+        </button>
+        <ToastContainer />
+      </form>
+    </>
   );
 }
 

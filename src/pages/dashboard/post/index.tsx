@@ -54,47 +54,40 @@ export default function Post() {
     );
   };
 
-  const handleLogout = async () => {
-    try {
-      await axios.post("/api/auth/logout");
-      document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      router.push("/");
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  };
   return (
-    <main className="h-screen w-screen flex md:grid  bg-white p-2">
+    <>
       <Navbar />
       <ToastContainer />
-      <div className="w-full col-span-2 md:col-span-3 overflow-auto mt-20">
-        <div className="sticky top-0 bg-white z-10 py-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Post"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <main className="h-screen w-screen flex md:grid  bg-white p-2">
+        <div className="w-full col-span-2 md:col-span-3 overflow-auto mt-20">
+          <div className="sticky top-0 bg-white z-10 py-3">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Post"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <div className="">
+            <DataTable
+              value={filteredPost}
+              paginator
+              rows={10}
+              rowsPerPageOptions={[5, 10, 25]}
+              className="responsive-datatable"
+            >
+              <Column field="id" header="Id"></Column>
+              <Column field="title" header="Title"></Column>
+              <Column field="body" header="Body"></Column>
+              <Column field="id" header="Comment" body={Comment}></Column>
+              <Column field="id" header="Action" body={Action}></Column>
+            </DataTable>
+          </div>
         </div>
-        <div className="">
-          <DataTable
-            value={filteredPost}
-            paginator
-            rows={10}
-            rowsPerPageOptions={[5, 10, 25]}
-            className="responsive-datatable"
-          >
-            <Column field="id" header="Id"></Column>
-            <Column field="title" header="Title"></Column>
-            <Column field="body" header="Body"></Column>
-            <Column field="id" header="Comment" body={Comment}></Column>
-            <Column field="id" header="Action" body={Action}></Column>
-          </DataTable>
-        </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
 
