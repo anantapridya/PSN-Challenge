@@ -46,7 +46,7 @@ export default function CreatePost() {
     <>
       <Navbar />
       <form onSubmit={handleSubmit(onSubmit)} className="p-10">
-        <div className="md:grid grid-cols-2 gap-x-5 flex flex-col gap-y-3 mt-20">
+        <div className="md:grid grid-cols-2 gap-x-5 flex flex-col gap-y-3 mt-10">
           <div>
             <div className="input-group">
               <div className="input-group-prepend">

@@ -59,7 +59,7 @@ export default function Post() {
       <Navbar />
       <ToastContainer />
       <main className="h-screen w-screen flex md:grid  bg-white p-2">
-        <div className="w-full col-span-2 md:col-span-3 overflow-auto mt-20">
+        <div className="w-full col-span-2 md:col-span-3 overflow-auto mt-10">
           <div className="sticky top-0 bg-white z-10 py-3">
             <input
               type="text"
