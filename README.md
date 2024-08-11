@@ -24,6 +24,10 @@ bun dev
 - '/dashboard/post': List posts and comments
 - '/dashboard/post/[id]/create': Create new comment
 
+## Account:
+- username: ananta, password: PSN_CHALLENGE
+- username: psn, password: psn1234
+
 ## NOTE:
 - base on API proider, when performing CRUD action, resource will not be really updated on the server but it will be faked as if but don't worry we can still monitor the existing traffic
 - Create Comment
