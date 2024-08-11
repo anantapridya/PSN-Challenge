@@ -2,7 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.p-datatable-footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.p-paginator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; /* Adjust spacing between paginator buttons */
+}
+
+.p-paginator .p-paginator-pages {
+  display: flex;
+  gap: 4px;
+}
+
+.p-paginator .p-paginator-page {
+  padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .p-paginator {
+    font-size: 0.8rem; /* Adjust font size on smaller screens */
+  }
+
+  .p-paginator .p-paginator-page {
+    padding: 0.3rem; /* Adjust padding for smaller screens */
+  }
+}
+
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -30,4 +67,4 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
+} */
